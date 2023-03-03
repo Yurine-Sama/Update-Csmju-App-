@@ -167,8 +167,8 @@ class _HomePageCarouselState extends State<GuestPage> {
             height: 10,
           ),
 
-          Visibility(
-            visible: false,
+          Offstage(
+            offstage: true,
             child: CategoriesWidget(),
           ),
           SizedBox(

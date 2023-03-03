@@ -48,7 +48,7 @@ class APIService {
 
     _getToken() async {
         SharedPreferences localStorage = await SharedPreferences.getInstance();
-         var access_token = localStorage.getStringList('access_token');
+         var access_token = localStorage.getString('access_token');
         return '?access_token= $access_token';
     }
 

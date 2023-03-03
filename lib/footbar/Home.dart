@@ -191,12 +191,29 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
                 )),
           ),
           ///////////////////////////////////////////////////////>>>>>>>>หัวข้อโครงการล่าสุด
+          ///
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'ทางลัด',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: Colors.blueGrey[900],
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+            ),
+          ),
+          CategoriesWidget(),
+          SizedBox(
+            height: 20,
+          ),
           SizedBox(
             height: 10,
           ),
           Text(
             'โครงการล่าสุด',
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.left,
             style: TextStyle(
               color: Colors.blueGrey[900],
               fontWeight: FontWeight.bold,
@@ -208,10 +225,6 @@ class _HomePageCarouselState extends State<HomePageCarousel> {
             height: 10,
           ),
 
-          CategoriesWidget(),
-          SizedBox(
-            height: 20,
-          ),
           SingleChildScrollView(
               physics: ScrollPhysics(),
               child: Container(

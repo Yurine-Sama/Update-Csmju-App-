@@ -18,7 +18,7 @@ class GuestFoot extends StatefulWidget {
 var data;
 bool hasdata = false;
 
-Widget currentScreen = HomePageCarousel();
+Widget currentScreen = GuestPage();
 final PageStorageBucket bucket = PageStorageBucket();
 
 class _FootState extends State<GuestFoot> {
@@ -81,7 +81,7 @@ class _FootState extends State<GuestFoot> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = HomePageCarousel();
+                        currentScreen = GuestPage();
                         currentTab = 0;
                       });
                     },
