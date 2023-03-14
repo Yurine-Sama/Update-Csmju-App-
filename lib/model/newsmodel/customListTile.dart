@@ -36,7 +36,7 @@ Widget customListTile(Apinew article, BuildContext context) {
             decoration: BoxDecoration(
               //let's add the height
               image: DecorationImage(
-                  image: NetworkImage(article.newsPicture), fit: BoxFit.cover),
+                  image: NetworkImage(article.poster), fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(5.0),
             ),
           ),
@@ -51,7 +51,7 @@ Widget customListTile(Apinew article, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              article.newsTitle,
+              article.title,
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontSize: 20,
@@ -61,22 +61,22 @@ Widget customListTile(Apinew article, BuildContext context) {
             ),
           ),
           ////////////////////////////////////////////////////////////>>>>>>.วันที่
-          Container(
-            padding: EdgeInsets.all(6.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(0.0),
-            ),
-            child: Text(
-              article.newsDate,
-              style: TextStyle(
-                color: Colors.blueGrey[900],
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sarabun',
-              ),
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(6.0),
+          //   decoration: BoxDecoration(
+          //     color: Colors.white,
+          //     borderRadius: BorderRadius.circular(0.0),
+          //   ),
+          //   child: Text(
+          //     article.newsDate,
+          //     style: TextStyle(
+          //       color: Colors.blueGrey[900],
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.bold,
+          //       fontFamily: 'Sarabun',
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     ),

@@ -2,136 +2,131 @@
 //
 //     final apinew = apinewFromJson(jsonString);
 
-import 'dart:convert';
-
-List<Apinew> apinewFromJson(String str) => List<Apinew>.from(json.decode(str).map((x) => Apinew.fromJson(x)));
-
-String apinewToJson(List<Apinew> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-class Apinew {
-    Apinew({
-        
-        required this.newsDetail,
-        required this.newsDate,
-        required this.newsTime,
-        required this.newsPicture,
-        required this.newsTitle,
-        required this.newsFile,
-        required this.newsLinks,
-        required this.newsType,
-    });
-
-    
-    String newsDetail;
-    String newsDate;
-    String newsTime;
-    String newsPicture;
-    String newsTitle;
-    String newsFile;
-    String newsLinks;
-    String newsType;
-
-    factory Apinew.fromJson(Map<String, dynamic> json) => Apinew(
-        
-        newsDetail: json["News_Detail"],
-        newsDate: json["News_Date"],
-        newsTime: json["News_Time"],
-        newsPicture: json["News_Picture"],
-        newsTitle: json["News_Title"],
-        newsFile: json["News_File"],
-        newsLinks: json["News_links"],
-        newsType: json["News_Type"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        
-        "News_Detail": newsDetail,
-        "News_Date": newsDate,
-        "News_Time": newsTime,
-        "News_Picture": newsPicture,
-        "News_Title": newsTitle,
-        "News_File": newsFile,
-        "News_links": newsLinks,
-        "News_Type": newsType,
-    };
-}
-
-
-// // To parse this JSON data, do
-// //
-// //     final apinews = apinewsFromJson(jsonString);
-
 // import 'dart:convert';
 
-// Apinews apinewsFromJson(String str) => Apinews.fromJson(json.decode(str));
+// List<Apinew> apinewFromJson(String str) => List<Apinew>.from(json.decode(str).map((x) => Apinew.fromJson(x)));
 
-// String apinewsToJson(Apinews data) => json.encode(data.toJson());
-
-// class Apinews {
-//     Apinews({
-//         required this.success,
-//         required this.data,
-//     });
-
-//     bool success;
-//     List<Apinew> data;
-
-//     factory Apinews.fromJson(Map<String, dynamic> json) => Apinews(
-//         success: json["success"],
-//         data: List<Apinew>.from(json["data"].map((x) => Apinew.fromJson(x))),
-//     );
-
-//     Map<String, dynamic> toJson() => {
-//         "success": success,
-//         "data": List<dynamic>.from(data.map((x) => x.toJson())),
-//     };
-// }
+// String apinewToJson(List<Apinew> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 // class Apinew {
 //     Apinew({
-//         required this.id,
-//         required this.title,
-//         required this.detail,
-//         required this.poster,
-//         required this.link,
-//         required this.type,
-//         required this.isShow,
-//         this.images,
-//         required this.createdAt,
+        
+//         required this.newsDetail,
+//         required this.newsDate,
+//         required this.newsTime,
+//         required this.newsPicture,
+//         required this.newsTitle,
+//         required this.newsFile,
+//         required this.newsLinks,
+//         required this.newsType,
 //     });
 
-//     int id;
-//     String title;
-//     String detail;
-//     String poster;
-//     String link;
-//     String type;
-//     bool isShow;
-//     dynamic images;
-//     DateTime createdAt;
+    
+//     String newsDetail;
+//     String newsDate;
+//     String newsTime;
+//     String newsPicture;
+//     String newsTitle;
+//     String newsFile;
+//     String newsLinks;
+//     String newsType;
 
 //     factory Apinew.fromJson(Map<String, dynamic> json) => Apinew(
-//         id: json["id"],
-//         title: json["title"],
-//         detail: json["detail"],
-//         poster: json["poster"],
-//         link: json["link"],
-//         type: json["type"],
-//         isShow: json["is_show"],
-//         images: json["images"],
-//         createdAt: DateTime.parse(json["created_at"]),
+        
+//         newsDetail: json["News_Detail"],
+//         newsDate: json["News_Date"],
+//         newsTime: json["News_Time"],
+//         newsPicture: json["News_Picture"],
+//         newsTitle: json["News_Title"],
+//         newsFile: json["News_File"],
+//         newsLinks: json["News_links"],
+//         newsType: json["News_Type"],
 //     );
 
 //     Map<String, dynamic> toJson() => {
-//         "id": id,
-//         "title": title,
-//         "detail": detail,
-//         "poster": poster,
-//         "link": link,
-//         "type": type,
-//         "is_show": isShow,
-//         "images": images,
-//         "created_at": createdAt.toIso8601String(),
+        
+//         "News_Detail": newsDetail,
+//         "News_Date": newsDate,
+//         "News_Time": newsTime,
+//         "News_Picture": newsPicture,
+//         "News_Title": newsTitle,
+//         "News_File": newsFile,
+//         "News_links": newsLinks,
+//         "News_Type": newsType,
 //     };
 // }
+
+
+import 'dart:convert';
+
+Apinews apinewsFromJson(String str) => Apinews.fromJson(json.decode(str));
+
+String apinewsToJson(Apinews data) => json.encode(data.toJson());
+
+class Apinews {
+    Apinews({
+        required this.success,
+        required this.data,
+    });
+
+    bool success;
+    List<Apinew> data;
+
+    factory Apinews.fromJson(Map<String, dynamic> json) => Apinews(
+        success: json["success"],
+        data: List<Apinew>.from(json["data"].map((x) => Apinew.fromJson(x))),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "success": success,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    };
+}
+class Apinew {
+    Apinew({
+        required this.id,
+        required this.title,
+        required this.detail,
+        required this.poster,
+        required this.link,
+        required this.type,
+        required this.isShow,
+        this.images,
+        required this.createdAt,
+    });
+
+    int id;
+    String title;
+    String detail;
+    String poster;
+    String link;
+    String type;
+    bool isShow;
+    dynamic images;
+    DateTime createdAt;
+
+    factory Apinew.fromJson(Map<String, dynamic> json) => Apinew(
+        id: json["id"],
+        title: json["title"],
+        detail: json["detail"],
+        poster: json["poster"],
+        link: json["link"],
+        type: json["type"],
+        isShow: json["is_show"],
+        images: json["images"],
+        createdAt: DateTime.parse(json["created_at"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "detail": detail,
+        "poster": poster,
+        "link": link,
+        "type": type,
+        "is_show": isShow,
+        "images": images,
+        "created_at": createdAt.toIso8601String(),
+    };
+}
 

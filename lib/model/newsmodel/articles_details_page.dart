@@ -49,7 +49,7 @@ class ArticlePage extends StatelessWidget {
               decoration: BoxDecoration(
                 //let's add the height
                 image: DecorationImage(
-                    image: NetworkImage(article.newsPicture),
+                    image: NetworkImage(article.poster),
                     fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(5.0),
                 border: Border.all(
@@ -70,7 +70,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                article.newsTitle,
+                article.title,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   letterSpacing: 1,
@@ -114,7 +114,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                article.newsDetail,
+                article.detail,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   letterSpacing: 0.98,
@@ -147,24 +147,24 @@ class ArticlePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                // color: Colors.black,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Text(
-                article.newsFile,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  letterSpacing: 0.98,
-                  color: Colors.blueGrey[900],
-                  fontSize: 18,
-                  //fontWeight: FontWeight.bold,
-                  fontFamily: 'Sarabun',
-                ),
-              ),
-            ),
+            // Container(
+            //   padding: EdgeInsets.all(6.0),
+            //   decoration: BoxDecoration(
+            //     // color: Colors.black,
+            //     borderRadius: BorderRadius.circular(20.0),
+            //   ),
+            //   child: Text(
+            //     article.newsFile,
+            //     textAlign: TextAlign.justify,
+            //     style: TextStyle(
+            //       letterSpacing: 0.98,
+            //       color: Colors.blueGrey[900],
+            //       fontSize: 18,
+            //       //fontWeight: FontWeight.bold,
+            //       fontFamily: 'Sarabun',
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 8.0,
             ),
@@ -194,7 +194,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                article.newsType,
+                article.type,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   letterSpacing: 0.98,
@@ -234,7 +234,7 @@ class ArticlePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
-                article.newsLinks,
+                article.link,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   letterSpacing: 0.98,
@@ -249,64 +249,64 @@ class ArticlePage extends StatelessWidget {
               height: 8.0,
             ),
             ///////////////////////////////////////////////////////////////วันที่ประกาศ
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    // color: Colors.black,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Row(
-                    children: [
-                      Text(
-                        "วันที่ : ",
-                        style: TextStyle(
-                          color: Colors.blueGrey[900],
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          //fontWeight: FontWeight.bold,
-                          fontFamily: 'Sarabun',
-                        ),
-                      ),
-                      Text(
-                       article.newsDate,
-                        style: TextStyle(
-                          color: Colors.blueGrey[900],
-                          fontSize: 18,
-                          //fontWeight: FontWeight.bold,
-                          fontFamily: 'Sarabun',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "เวลา ",
-                      style: TextStyle(
-                        color: Colors.blueGrey[900],
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Sarabun',
-                      ),
-                    ),
-                    Text(
-                      article.newsTime,
-                      style: TextStyle(
-                        color: Colors.blueGrey[900],
-                        fontSize: 18,
-                        //fontWeight: FontWeight.bold,
-                        fontFamily: 'Sarabun',
-                      ),
-                    ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Container(
+            //       padding: EdgeInsets.all(6.0),
+            //       decoration: BoxDecoration(
+            //         // color: Colors.black,
+            //         borderRadius: BorderRadius.circular(20.0),
+            //       ),
+            //       child: Row(
+            //         children: [
+            //           Text(
+            //             "วันที่ : ",
+            //             style: TextStyle(
+            //               color: Colors.blueGrey[900],
+            //               fontSize: 18,
+            //               fontWeight: FontWeight.bold,
+            //               //fontWeight: FontWeight.bold,
+            //               fontFamily: 'Sarabun',
+            //             ),
+            //           ),
+            //           Text(
+            //            article.newsDate,
+            //             style: TextStyle(
+            //               color: Colors.blueGrey[900],
+            //               fontSize: 18,
+            //               //fontWeight: FontWeight.bold,
+            //               fontFamily: 'Sarabun',
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //     Row(
+            //       children: [
+            //         Text(
+            //           "เวลา ",
+            //           style: TextStyle(
+            //             color: Colors.blueGrey[900],
+            //             fontSize: 18,
+            //             fontWeight: FontWeight.bold,
+            //             fontFamily: 'Sarabun',
+            //           ),
+            //         ),
+            //         Text(
+            //           article.newsTime,
+            //           style: TextStyle(
+            //             color: Colors.blueGrey[900],
+            //             fontSize: 18,
+            //             //fontWeight: FontWeight.bold,
+            //             fontFamily: 'Sarabun',
+            //           ),
+            //         ),
                     
-                  ],
-                ),
-              ],
-            )
+            //       ],
+            //     ),
+            //   ],
+            // )
           ],
         ),
       ),

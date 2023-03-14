@@ -22,8 +22,25 @@ class _NewsState extends State<News> {
   @override
   void initState() {
     super.initState();
-
+    this.fetchNews();
     findUser();
+  }
+
+  List news_detail = [];
+
+  fetchNews() async {
+    print("fetching...");
+    var _data = await ApiService.getArticle();
+    print(_data.data);
+    if (_data != null) {
+      setState(() {
+        news_detail = _data.data;
+      });
+    } else {
+      setState(() {
+        news_detail = [];
+      });
+    }
   }
 
   ApiService client = ApiService();
@@ -63,8 +80,7 @@ class _NewsState extends State<News> {
         backgroundColor: Colors.white,
         leading: InkWell(
           onTap: () {
-            
-           Navigator.push(context, MaterialPageRoute(builder: (context) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
               return Profile();
             }));
           },
@@ -75,9 +91,7 @@ class _NewsState extends State<News> {
                   width: 100.0,
                   height: 100.0,
                   decoration: new BoxDecoration(
-                      border: Border.all(
-                          width: 2.5,
-                          color: Color(0xff24a878)),
+                      border: Border.all(width: 2.5, color: Color(0xff24a878)),
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.scaleDown,
@@ -103,7 +117,6 @@ class _NewsState extends State<News> {
                 return Notifications();
               }));
             },
-            
             icon: Icon(
               Icons.notifications,
               color: Colors.blueGrey[800],
@@ -113,10 +126,9 @@ class _NewsState extends State<News> {
       ),
       body: FutureBuilder(
         ///////////////////////////////////////////////////////////>>>>>>>>>>แสดงหน้าข่าว
-        future: client.getArticle(),
-        builder: (BuildContext context, AsyncSnapshot<List<Apinew>> snapshot) {
+        future: ApiService.getArticle(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
-            List<Apinew>? data = snapshot.data;
             return SingleChildScrollView(
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
@@ -125,9 +137,9 @@ class _NewsState extends State<News> {
                 ),
                 shrinkWrap: true,
                 reverse: true,
-                itemCount: data!.length,
+                itemCount: news_detail!.length,
                 itemBuilder: (context, index) =>
-                    customListTile(data[index], context),
+                    customListTile(news_detail[index], context),
               ),
             );
           }
