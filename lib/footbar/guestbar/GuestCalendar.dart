@@ -26,7 +26,7 @@ class _CalendarState extends State<GuestCalendar> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-
+  List _activity = [];
   TextEditingController _eventController = TextEditingController();
 
   @override
@@ -34,6 +34,23 @@ class _CalendarState extends State<GuestCalendar> {
     selectedEvents = {};
 
     super.initState();
+    this.getActivity();
+  }
+
+// get activity
+  getActivity() async {
+    var _data = await ActivityApiService.getsActivity();
+    if (_data != null) {
+      setState(() {
+        _activity = _data.data;
+      });
+    } else {
+      setState(() {
+        _activity = [];
+      });
+    }
+
+    print(_data.data);
   }
 
   List<Event> _getEventsfromDay(DateTime date) {
@@ -235,9 +252,8 @@ class _CalendarState extends State<GuestCalendar> {
                   child: FutureBuilder(
                     future: ActivityApiService.getsActivity(),
                     builder: (BuildContext context,
-                        AsyncSnapshot<List<Activity>> snapshot) {
+                        AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.hasData) {
-                        List<Activity>? data = snapshot.data;
                         return Align(
                           alignment: Alignment.topCenter,
                           child: ListView.builder(
@@ -248,9 +264,10 @@ class _CalendarState extends State<GuestCalendar> {
                             physics: NeverScrollableScrollPhysics(
                               parent: BouncingScrollPhysics(),
                             ),
-                            itemCount: data!.length < 5 ? data.length : 5,
+                            itemCount:
+                                _activity.length < 5 ? _activity.length : 5,
                             itemBuilder: (context, index) =>
-                                customActivityBelow(data[index], context),
+                                customActivityBelow(_activity[index], context),
                           ),
                         );
                       }

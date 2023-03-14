@@ -2,7 +2,7 @@ import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/model/carouselmodel/Activitybelow.dart';
 import 'package:flutter/material.dart';
 
-Widget customActivityBelow(Activity article, BuildContext context) {
+Widget customActivityBelow(Datum article, BuildContext context) {
   return InkWell(
     onTap: () {
       Navigator.push(
@@ -36,7 +36,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              article.Activity_Title,
+              article.name.toString(),
               style: TextStyle(
                 color: Color(0xff24a878),
                 fontSize: 20,
@@ -56,7 +56,7 @@ Widget customActivityBelow(Activity article, BuildContext context) {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Text(
-                  "วันที่ " + article.Activity_Start,
+                  "วันที่ " + article.dateStart.toString(),
                   style: TextStyle(
                     color: Colors.blueGrey[900],
                     fontSize: 15.0,

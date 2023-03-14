@@ -15,6 +15,26 @@ class ActivityAnoter extends StatefulWidget {
 
 class _ActivityAnoterState extends State<ActivityAnoter> {
   ActivityApiService client = ActivityApiService();
+  List _activity = [];
+  @override
+  void initState() {
+    super.initState();
+    this.getActivity();
+  }
+
+  getActivity() async {
+    var _data = await ActivityApiService.getsActivity();
+    if (_data != null) {
+      setState(() {
+        _activity = _data.data;
+      });
+    } else {
+      setState(() {
+        _activity = [];
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,10 +74,8 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
       ),
       body: FutureBuilder(
         future: ActivityApiService.getsActivity(),
-        builder:
-            (BuildContext context, AsyncSnapshot<List<Activity>> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
-            List<Activity>? data = snapshot.data;
             return SingleChildScrollView(
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
@@ -66,9 +84,9 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
                 ),
                 shrinkWrap: true,
                 reverse: true,
-                itemCount: data!.length,
+                itemCount: _activity.length,
                 itemBuilder: (context, index) =>
-                    customListactivity(data[index], context),
+                    customListactivity(_activity[index], context),
               ),
             );
           }
@@ -80,3 +98,30 @@ class _ActivityAnoterState extends State<ActivityAnoter> {
     );
   }
 }
+
+
+  // body: FutureBuilder(
+  //       future: ActivityApiService.getsActivity(),
+  //       builder:
+  //           (BuildContext context, AsyncSnapshot<List<Datum>> snapshot) {
+  //         if (snapshot.hasData) {
+  //           List<Datum>? data = snapshot.data;
+  //           return SingleChildScrollView(
+  //             child: ListView.builder(
+  //               scrollDirection: Axis.vertical,
+  //               physics: NeverScrollableScrollPhysics(
+  //                 parent: BouncingScrollPhysics(),
+  //               ),
+  //               shrinkWrap: true,
+  //               reverse: true,
+  //               itemCount: data!.length,
+  //               itemBuilder: (context, index) =>
+  //                   customListactivity(data[index], context),
+  //             ),
+  //           );
+  //         }
+  //         return Center(
+  //           child: CircularProgressIndicator(),
+  //         );
+  //       },
+  //     ),

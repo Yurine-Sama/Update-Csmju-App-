@@ -2,7 +2,7 @@ import 'package:appcsmju/APImodel/Activity.dart';
 import 'package:appcsmju/model/activitymodel/activity_details.dart';
 import 'package:flutter/material.dart';
 
-Widget customListactivity(Activity activity, BuildContext context) {
+Widget customListactivity(Datum activity, BuildContext context) {
   return InkWell(
     onTap: () {
       Navigator.push(
@@ -35,7 +35,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
             decoration: BoxDecoration(
               //let's add the height
               image: DecorationImage(
-                  image: NetworkImage(activity.Activity_Picture),
+                  image: NetworkImage(activity.poster.toString()),
                   fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(5.0),
             ),
@@ -51,7 +51,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              activity.Activity_Title,
+              activity.name.toString(),
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontSize: 20.0,
@@ -68,7 +68,7 @@ Widget customListactivity(Activity activity, BuildContext context) {
               borderRadius: BorderRadius.circular(0.0),
             ),
             child: Text(
-              "วันที่ : " + activity.Activity_Start,
+              "วันที่ : " + activity.dateStart.toString(),
               style: TextStyle(
                 color: Colors.blueGrey[900],
                 fontSize: 18.0,

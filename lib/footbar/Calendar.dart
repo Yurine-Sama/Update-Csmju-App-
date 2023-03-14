@@ -26,14 +26,31 @@ class _CalendarState extends State<Calendar> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-
+  List _activity = [];
   TextEditingController _eventController = TextEditingController();
 
   @override
   void initState() {
     selectedEvents = {};
     findUser();
+    this.getActivity();
     super.initState();
+  }
+
+  // get activity
+  getActivity() async {
+    var _data = await ActivityApiService.getsActivity();
+    if (_data != null) {
+      setState(() {
+        _activity = _data.data;
+      });
+    } else {
+      setState(() {
+        _activity = [];
+      });
+    }
+
+    print(_data.data);
   }
 
   List<Event> _getEventsfromDay(DateTime date) {
@@ -93,9 +110,7 @@ class _CalendarState extends State<Calendar> {
                   width: 100.0,
                   height: 100.0,
                   decoration: new BoxDecoration(
-                      border: Border.all(
-                          width: 2.5,
-                          color: Color(0xff24a878)),
+                      border: Border.all(width: 2.5, color: Color(0xff24a878)),
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.scaleDown,
@@ -259,9 +274,8 @@ class _CalendarState extends State<Calendar> {
                   child: FutureBuilder(
                     future: ActivityApiService.getsActivity(),
                     builder: (BuildContext context,
-                        AsyncSnapshot<List<Activity>> snapshot) {
+                        AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.hasData) {
-                        List<Activity>? data = snapshot.data;
                         return Align(
                           alignment: Alignment.topCenter,
                           child: ListView.builder(
@@ -272,9 +286,10 @@ class _CalendarState extends State<Calendar> {
                             physics: NeverScrollableScrollPhysics(
                               parent: BouncingScrollPhysics(),
                             ),
-                            itemCount: data!.length < 5 ? data.length : 5,
+                            itemCount:
+                                _activity.length < 5 ? _activity.length : 5,
                             itemBuilder: (context, index) =>
-                                customActivityBelow(data[index], context),
+                                customActivityBelow(_activity[index], context),
                           ),
                         );
                       }

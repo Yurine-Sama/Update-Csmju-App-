@@ -15,7 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Activitybelow extends StatefulWidget {
   const Activitybelow({Key? key, required this.article}) : super(key: key);
   //Activitybelow({required this.article});
-  final Activity article;
+  final Datum article;
 
   @override
   State<Activitybelow> createState() => _ActivitybelowState();
@@ -102,7 +102,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                   decoration: BoxDecoration(
                     //let's add the height
                     image: DecorationImage(
-                        image: NetworkImage(widget.article.Activity_Picture),
+                        image: NetworkImage(widget.article.poster.toString()),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(5.0),
                     border: Border.all(
@@ -122,7 +122,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Text(
-                    widget.article.Activity_Title,
+                    widget.article.name.toString(),
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       letterSpacing: 1.2,
@@ -166,7 +166,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Text(
-                    widget.article.Activity_Detail,
+                    widget.article.detail.toString(),
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       letterSpacing: 0.98,
@@ -206,7 +206,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Text(
-                    widget.article.Activity_Location,
+                    widget.article.location.toString(),
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       letterSpacing: 0.98,
@@ -246,7 +246,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Text(
-                    widget.article.Activity_Organizer,
+                    widget.article.organizer.toString(),
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       letterSpacing: 0.98,
@@ -284,7 +284,7 @@ class _ActivitybelowState extends State<Activitybelow> {
                             ),
                           ),
                           Text(
-                            widget.article.Activity_Start,
+                            widget.article.dateStart.toString(),
                             style: TextStyle(
                               color: Colors.blueGrey[900],
                               fontSize: 18,
@@ -306,42 +306,42 @@ class _ActivitybelowState extends State<Activitybelow> {
                             fontFamily: 'Sarabun',
                           ),
                         ),
-                        Text(
-                          widget.article.Activity_TimeStart,
-                          style: TextStyle(
-                            color: Colors.blueGrey[900],
-                            fontSize: 18,
-                            //fontWeight: FontWeight.bold,
-                            fontFamily: 'Sarabun',
-                          ),
-                        ),
-                        Text(
-                          " น. ถึง ",
-                          style: TextStyle(
-                            color: Colors.blueGrey[900],
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Sarabun',
-                          ),
-                        ),
-                        Text(
-                          widget.article.Activity_TimeEnd,
-                          style: TextStyle(
-                            color: Colors.blueGrey[900],
-                            fontSize: 18,
-                            //fontWeight: FontWeight.bold,
-                            fontFamily: 'Sarabun',
-                          ),
-                        ),
-                        Text(
-                          " น.",
-                          style: TextStyle(
-                            color: Colors.blueGrey[900],
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Sarabun',
-                          ),
-                        ),
+                        // Text(
+                        //   widget.article.Activity_TimeStart,
+                        //   style: TextStyle(
+                        //     color: Colors.blueGrey[900],
+                        //     fontSize: 18,
+                        //     //fontWeight: FontWeight.bold,
+                        //     fontFamily: 'Sarabun',
+                        //   ),
+                        // ),
+                        // Text(
+                        //   " น. ถึง ",
+                        //   style: TextStyle(
+                        //     color: Colors.blueGrey[900],
+                        //     fontSize: 18,
+                        //     fontWeight: FontWeight.bold,
+                        //     fontFamily: 'Sarabun',
+                        //   ),
+                        // ),
+                        // Text(
+                        //   widget.article.Activity_TimeEnd,
+                        //   style: TextStyle(
+                        //     color: Colors.blueGrey[900],
+                        //     fontSize: 18,
+                        //     //fontWeight: FontWeight.bold,
+                        //     fontFamily: 'Sarabun',
+                        //   ),
+                        // ),
+                        // Text(
+                        //   " น.",
+                        //   style: TextStyle(
+                        //     color: Colors.blueGrey[900],
+                        //     fontSize: 18,
+                        //     fontWeight: FontWeight.bold,
+                        //     fontFamily: 'Sarabun',
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],
@@ -381,10 +381,10 @@ class _ActivitybelowState extends State<Activitybelow> {
                           final String Email = email;
                           final String studentCode = studentcode;
                           final String Activity_Start =
-                              widget.article.Activity_Start;
+                              widget.article.dateStart.toString();
                           final String Status = "เข้าร่วมกิจกรรม";
                           final String Activity_Title =
-                              widget.article.Activity_Title;
+                              widget.article.name.toString();
 
                           ///////////////////////////////////////////////////>>>>>>>>.post
                           final ActivityPostmodel? _user = await postactivity(

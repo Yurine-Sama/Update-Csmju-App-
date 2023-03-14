@@ -18,18 +18,19 @@ class GuestPage extends StatefulWidget {
   const GuestPage({Key? key}) : super(key: key);
 
   @override
-  _HomePageCarouselState createState() => _HomePageCarouselState();
+  _HomePageCarouselStateGuest createState() => _HomePageCarouselStateGuest();
 }
 
 //animals.reversed.toList();
-class _HomePageCarouselState extends State<GuestPage> {
-  late List<Activity> _activity;
+class _HomePageCarouselStateGuest extends State<GuestPage> {
+  // late List<Datum> _activity;
+  List _activity = [];
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    getActivity();
+    this.getActivity();
   }
 
   var ID;
@@ -38,11 +39,21 @@ class _HomePageCarouselState extends State<GuestPage> {
 //////////////////////////////////////////////////////////////////////>>>>>>>>get user
   //ProfileP? profileP;
 
-  Future<void> getActivity() async {
-    _activity = await ActivityApiService.getsActivity();
-    setState(() {
-      _isLoading = false;
-    });
+  getActivity() async {
+    var _data = await ActivityApiService.getsActivity();
+    if (_data != null) {
+      setState(() {
+        _isLoading = false;
+        _activity = _data.data;
+      });
+    } else {
+      setState(() {
+        _activity = [];
+        _isLoading = false;
+      });
+    }
+
+    print(_data.data);
   }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -193,10 +204,9 @@ class _HomePageCarouselState extends State<GuestPage> {
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder(
                   future: ActivityApiService.getsActivity(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<Activity>> snapshot) {
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                     if (snapshot.hasData) {
-                      List<Activity>? data = snapshot.data;
                       return Align(
                         alignment: Alignment.topCenter,
                         child: ListView.builder(
@@ -206,9 +216,11 @@ class _HomePageCarouselState extends State<GuestPage> {
                           physics: NeverScrollableScrollPhysics(
                             parent: BouncingScrollPhysics(),
                           ),
-                          itemCount: data!.length < 5 ? data.length : 5,
+                          itemCount: _activity != null && _activity.length < 5
+                              ? _activity.length
+                              : 5,
                           itemBuilder: (context, index) =>
-                              customActivityBelow(data[index], context),
+                              customActivityBelow(_activity[index], context),
                         ),
                       );
                     }

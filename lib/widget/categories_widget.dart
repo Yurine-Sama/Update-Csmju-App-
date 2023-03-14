@@ -5,7 +5,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget({Key? key}) : super(key: key);
+  CategoriesWidget({Key? key}) : super(key: key);
+
+  final List<String> image = ['assets/images/1.jpg', 'assets/images/2.jpg'];
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class CategoriesWidget extends StatelessWidget {
       child: Row(
         children: [
           //loop images
-          for (int i = 1; i < 8; i++)
+          for (int i = 1; i < 3; i++)
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
