@@ -55,3 +55,83 @@ class Apinew {
         "News_Type": newsType,
     };
 }
+
+
+// // To parse this JSON data, do
+// //
+// //     final apinews = apinewsFromJson(jsonString);
+
+// import 'dart:convert';
+
+// Apinews apinewsFromJson(String str) => Apinews.fromJson(json.decode(str));
+
+// String apinewsToJson(Apinews data) => json.encode(data.toJson());
+
+// class Apinews {
+//     Apinews({
+//         required this.success,
+//         required this.data,
+//     });
+
+//     bool success;
+//     List<Apinew> data;
+
+//     factory Apinews.fromJson(Map<String, dynamic> json) => Apinews(
+//         success: json["success"],
+//         data: List<Apinew>.from(json["data"].map((x) => Apinew.fromJson(x))),
+//     );
+
+//     Map<String, dynamic> toJson() => {
+//         "success": success,
+//         "data": List<dynamic>.from(data.map((x) => x.toJson())),
+//     };
+// }
+
+// class Apinew {
+//     Apinew({
+//         required this.id,
+//         required this.title,
+//         required this.detail,
+//         required this.poster,
+//         required this.link,
+//         required this.type,
+//         required this.isShow,
+//         this.images,
+//         required this.createdAt,
+//     });
+
+//     int id;
+//     String title;
+//     String detail;
+//     String poster;
+//     String link;
+//     String type;
+//     bool isShow;
+//     dynamic images;
+//     DateTime createdAt;
+
+//     factory Apinew.fromJson(Map<String, dynamic> json) => Apinew(
+//         id: json["id"],
+//         title: json["title"],
+//         detail: json["detail"],
+//         poster: json["poster"],
+//         link: json["link"],
+//         type: json["type"],
+//         isShow: json["is_show"],
+//         images: json["images"],
+//         createdAt: DateTime.parse(json["created_at"]),
+//     );
+
+//     Map<String, dynamic> toJson() => {
+//         "id": id,
+//         "title": title,
+//         "detail": detail,
+//         "poster": poster,
+//         "link": link,
+//         "type": type,
+//         "is_show": isShow,
+//         "images": images,
+//         "created_at": createdAt.toIso8601String(),
+//     };
+// }
+
